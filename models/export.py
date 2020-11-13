@@ -47,7 +47,7 @@ if __name__ == '__main__':
             m.act = Hardswish()  # assign activation
         # if isinstance(m, models.yolo.Detect):
         #     m.forward = m.forward_export  # assign forward (optional)
-    model.model[-1].export = True  # set Detect() layer export=True
+    model.model[-1].export = False  # set Detect() layer export=True
     y = model(img)  # dry run
 
     # TorchScript export
@@ -59,6 +59,8 @@ if __name__ == '__main__':
         print('TorchScript export success, saved as %s' % f)
     except Exception as e:
         print('TorchScript export failure: %s' % e)
+
+    exit()
 
     # ONNX export
     try:
